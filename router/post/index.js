@@ -27,7 +27,11 @@ router.get("/all", (_, res) => {
           encoding: "utf8",
         });
 
-        const convertedData = matter(result);
+        let convertedData = matter(result);
+
+        if (convertedData.data.thumbnail) {
+          convertedData.data.thumbnail = `${convertedData.data.thumbnail}`;
+        }
 
         sum.push({
           type: "post",
